@@ -4,7 +4,7 @@
 
 A mobile weather app displays the weather of a chosen location.
 
-- 
+- now 
 - today's maximum and minimum temperature
 - every 3 hours
 - one week from today
@@ -18,6 +18,7 @@ A mobile weather app displays the weather of a chosen location.
 
 
 ### Setup
+
 To run this project, download weather_app from github. 
 
 ```
