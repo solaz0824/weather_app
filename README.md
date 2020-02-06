@@ -1,11 +1,13 @@
 # Weather App
 
 ### Desctiption
+
 A mobile weather app displays the weather of a chosen location.
+
 - 
 - today's maximum and minimum temperature
 - every 3 hours
-- 
+- one week from today
 
 ### Technologies
 - HTML, CSS
