@@ -11,12 +11,7 @@ import Squares_weekly from './components/squares_weekly.js'
 import GooglePlacesInput from './components/autoComplete.js'
 
 
-//       url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=${16909a97489bed275d13dbdea4e01f59}`
 
-//       fetch(url)
-//       .then( res1 => res1.json())
-//       .then( res2 => console.log(res2))
-//       .catch( error => console.log(error))
 
 
 export default class App extends React.Component {
@@ -51,12 +46,10 @@ export default class App extends React.Component {
 
   getLocation = () => {
     navigator.geolocation.getCurrentPosition(position => {
-      console.log(position)
       const { latitude, longitude } = position.coords
       this.getCurrentWeather(latitude, longitude)
       this.getEveryThreeHours(latitude, longitude)
       this.getWeeklyWeather(latitude, longitude)
-      //call getCurr
     })
   }
 
@@ -80,7 +73,6 @@ export default class App extends React.Component {
           date: getDate(resJson.dt),
           icon: resJson.weather[0].icon
         })
-        console.log(resJson, '==================')
       })
       .catch(error => console.log(error))
   }
@@ -110,13 +102,10 @@ export default class App extends React.Component {
   }
 
   setModalVisible = (visible) => {
-    console.log(visible)
     this.setState({ modalVisible: visible });
   }
 
   _handleLoadingError = error => {
-    // In this case, you might want to report the error to your error
-    // reporting service, for example Sentry
     console.warn(error);
   };
 
@@ -314,7 +303,6 @@ const styles = StyleSheet.create({
     height: '55%',
     alignItems: 'center',
     backgroundColor: '#e6fff2'
-    // fontFamily:''
   },
   main_top: {
     flex: 3.5,
@@ -325,7 +313,6 @@ const styles = StyleSheet.create({
   main_top_1: {
     width: '50%',
     alignItems: 'center',
-    //backgroundColor: 'pink',
     justifyContent: 'space-around',
     padding: '2%'
   },
@@ -353,8 +340,6 @@ const styles = StyleSheet.create({
     height: '50%',
     backgroundColor: '#e6fff2',
     flexDirection: 'row',
-
-    // fontFamily:''
   },
 
   main_bottom: {
