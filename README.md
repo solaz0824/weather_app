@@ -1,4 +1,8 @@
 # Weather App
+<div>
+<img width='30%' src='https://user-images.githubusercontent.com/50446830/74682921-b679d180-51c7-11ea-96f4-e857a5988a0e.PNG' />
+<img width='30%' src='https://user-images.githubusercontent.com/50446830/74682920-b548a480-51c7-11ea-9689-5bbeeffed40a.PNG' />
+</div>
 
 ### Desctiption
 
