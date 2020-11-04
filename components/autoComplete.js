@@ -5,6 +5,7 @@ const homePlace = { description: 'Home', geometry: { location: { lat: 48.8152937
 const workPlace = { description: 'Work', geometry: { location: { lat: 48.8496818, lng: 2.2940881 } }};
 
 const GooglePlacesInput = (props) => {
+  
   return (
     <GooglePlacesAutocomplete
       placeholder='Search'
@@ -14,8 +15,8 @@ const GooglePlacesInput = (props) => {
       keyboardAppearance={'light'} 
       listViewDisplayed='auto'   
       fetchDetails={true}
-      renderDescription={row => row.description} 
-      onPress={(data, details = null) => {   
+      renderDescription={row => row.description || row.formatted_address || row.name} 
+      onPress={(data, details = null) => {  
        const {lat, lng} = details.geometry.location
        props.getCurrentWeather(lat, lng)
        props.getEveryThreeHours(lat, lng)
@@ -26,7 +27,8 @@ const GooglePlacesInput = (props) => {
       getDefaultValue={() => ''}
 
       query={{
-        key: 'AIzaSyBIZyxpxH6PTguacSsY8gDfSONSLdKZFUk',
+
+        key: 'YOUR KEY',
         language: 'en', 
         types: '(cities)' 
       }}
@@ -36,6 +38,11 @@ const GooglePlacesInput = (props) => {
           width: '100%',
           backgroundColor:'#e6fff2'
         },
+        textInput: {
+          height: 38,
+          color: '#5d5d5d',
+          fontSize: 16,
+        },
         description: {
           fontWeight: 'bold'
         },
@@ -44,8 +51,8 @@ const GooglePlacesInput = (props) => {
         }
       }}
 
-      currentLocation={true} 
-      currentLocationLabel="Current location"
+      currentLocation={true}
+      currentLocationLabel='Current location'
       nearbyPlacesAPI='GooglePlacesSearch' 
       GoogleReverseGeocodingQuery={{
       }}
@@ -55,8 +62,7 @@ const GooglePlacesInput = (props) => {
       }}
       
       GooglePlacesDetailsQuery={{
-        fields: 'formatted_address',
-      }}
+      fields: 'geometry'}}
 
       filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} 
       predefinedPlaces={[homePlace, workPlace]}

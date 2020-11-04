@@ -15,7 +15,7 @@ export default class Squares_weekly extends React.Component {
        
         return  <View style={styles.square}>
             <View style={styles.flex}>
-                <Text style={{ fontSize: 20,  fontFamily:'RobotoMono'  }}>{this.getDays()}</Text>
+                <Text style={{ fontSize: 15,  fontFamily:'RobotoMono'  }}>{this.getDays()}</Text>
             </View>
             <View style={styles.flex}>
                 <Image source={images[this.props.weather[0].icon]} style={styles.image} />

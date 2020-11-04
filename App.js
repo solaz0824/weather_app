@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import { AppLoading, Font } from 'expo'
-import { Asset } from 'expo-asset'
+import { AppLoading } from 'expo';
+import * as Font from "expo-font";;
+import { Asset } from 'expo-asset';
 
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, Modal, TouchableHighlight } from 'react-native';
 import { Button } from 'react-native-elements'
@@ -9,7 +10,6 @@ import images from './helper/images.js'
 import Squares_3hrs from './components/squares_3hrs.js'
 import Squares_weekly from './components/squares_weekly.js'
 import GooglePlacesInput from './components/autoComplete.js'
-
 
 
 
@@ -37,8 +37,10 @@ export default class App extends React.Component {
     dataLoaded: false
   }
 
+  
+
   componentDidMount() {
-    Font.loadAsync({
+   Font.loadAsync({
       'RobotoMono': require('./assets/fonts/RobotoMono-Regular.ttf'),
     });
     this.getLocation()
@@ -54,7 +56,7 @@ export default class App extends React.Component {
   }
 
   getCurrentWeather = (latitude, longitude) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=${'16909a97489bed275d13dbdea4e01f59'}`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=${'YOUR KEY'}`)
       .then(res => res.json())
       .then(resJson => {
         this.setState({
@@ -78,7 +80,7 @@ export default class App extends React.Component {
   }
 
   getEveryThreeHours = (latitude, longitude) => {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=${'16909a97489bed275d13dbdea4e01f59'}`)
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=${'YOUR KEY'}`)
       .then(res => res.json())
       .then(resJson => {
         this.setState({
@@ -91,7 +93,7 @@ export default class App extends React.Component {
   }
 
   getWeeklyWeather = (latitude, longitude) => {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&units=metric&APPID=${'16909a97489bed275d13dbdea4e01f59'}`)
+    fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&units=metric&APPID=${'YOUR KEY'}`)
       .then(res => res.json())
       .then(resJson => {
         this.setState({
@@ -203,7 +205,7 @@ export default class App extends React.Component {
               </View>
 
               <View style={styles.header_2} >
-                <Text style={{ fontSize: 30, fontWeight:'900', paddingTop: '3%', fontFamily:'RobotoMono'  }}>{
+                <Text style={{ fontSize: 18, fontWeight:'900', paddingTop: '4%', fontFamily:'RobotoMono', textAlign: 'center', color:'#0c5244' }}>{
                   this.state.name
                 }</Text>
               </View>
@@ -220,7 +222,7 @@ export default class App extends React.Component {
                 <Text style={styles.sun_temp} ><Image source={require('./assets/icons/sunrise.png')} style={styles.icon_s} />{this.state.sunrise}
                   <Image source={require('./assets/icons/sunset.png')} style={styles.icon_s} />{this.state.sunset}
                 </Text>
-                <Text style={{ color: '#194d33', fontSize: 50, fontFamily:'RobotoMono'  }}>{Math.round(this.state.temp)}°C
+                <Text style={{ color: '#194d33', fontSize: 35, fontFamily:'RobotoMono'  }}>{Math.round(this.state.temp)}°C
               </Text>
                 <Text style={styles.sun_temp} ><Image source={require('./assets/icons/warm.png')} style={styles.icon_s} />{Math.round(this.state.temp_max)}°C
               <Image source={require('./assets/icons/cold.png')} style={styles.icon_s} />{Math.round(this.state.temp_min)}°C</Text>
@@ -345,11 +347,11 @@ const styles = StyleSheet.create({
   main_bottom: {
     flex: 4.5,
     width: '100%',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   main_bottom_1: {
-    height: '100%'
+    height: '100%',
   },
   
   icon_s: {
